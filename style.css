@@ -141,7 +141,7 @@ h2 { font-size: 24px; font-weight: 600; line-height: 1.4; }
 .interest-details .card { min-height: 180px; }
 .interest-details p { max-width: 480px; margin-top: 16px; font-size: 16px; line-height: 1.9; }
 
-/* 经历保留纵向阅读结构，不设置链接、按钮或悬停阴影。 */
+/* 经历正文保持原有编号与介绍，点击样式由 project-link 统一设置。 */
 .experience-list { margin-top: 16px; }
 .experience-list li { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 24px; padding-block: 32px; border-bottom: 1px solid var(--line); }
 .experience-list .section-number { padding-top: 5px; }
@@ -176,7 +176,7 @@ h2 { font-size: 24px; font-weight: 600; line-height: 1.4; }
   .button-primary:hover { background: var(--blue-hover); box-shadow: var(--hover-shadow); }
   .button-secondary:hover { background: var(--tint); border-color: var(--blue); box-shadow: var(--shadow); }
   .text-link:hover { text-decoration-color: var(--accent); }
-  .card:hover { border-color: var(--blue); box-shadow: var(--hover-shadow); }
+
   .contact-link:hover { background: var(--tint); border-color: var(--blue); box-shadow: var(--shadow); }
 }
 /* 点击样式放在悬停规则之后，保证按下时仍有反馈。 */
@@ -236,3 +236,68 @@ nav a:active, .button:active { background: var(--line); color: var(--blue); box-
 @media (prefers-reduced-motion: reduce) {
   nav a, .button, .text-link, .card { transition: none; }
 }
+
+
+/* 实践项目是真实链接；兴趣卡片仅展示文字。 */
+.card { cursor: default; box-shadow: none; transition: none; }
+.project-list { display: grid; gap: 12px; }
+.project-list li, .project-list li:first-child { padding: 0; border: 0; }
+.project-link {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 20px;
+  min-height: 76px;
+  padding: 18px;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  cursor: pointer;
+  transition: background-color .18s, border-color .18s, box-shadow .18s;
+}
+.project-arrow { color: var(--blue); font-size: 22px; line-height: 1; }
+.experience-list { display: grid; gap: 16px; padding-top: 16px; }
+.experience-list li { display: block; padding: 0; border: 0; }
+.experience-list .project-link { padding: 28px; }
+.experience-body { display: grid; grid-template-columns: 36px minmax(0, 1fr); gap: 20px; min-width: 0; }
+.project-link:active { background: var(--tint); border-color: var(--accent); box-shadow: none; }
+@media (hover: hover) {
+  .project-link:hover { background: var(--tint); border-color: var(--blue); box-shadow: var(--hover-shadow); }
+}
+.detail-header { padding-block: 24px; border-bottom: 1px solid var(--line); }
+.detail-intro { padding-block: 36px 28px; }
+.detail-intro h1 { font-size: 36px; }
+.video-layout { display: grid; grid-template-columns: minmax(0, 35fr) minmax(0, 65fr); align-items: start; gap: 32px; padding-top: 32px; }
+.video-prompt-panel { min-width: 0; padding: 24px; border: 1px solid var(--line); border-radius: var(--radius); }
+.video-prompt-panel h1 { font-size: 19px; letter-spacing: 0; line-height: 1.6; }
+.video-prompt-panel h1 span { display: block; margin-top: 4px; font-size: 11px; letter-spacing: 1.4px; color: var(--muted); }
+.prompt-text { min-height: 28em; margin-top: 24px; font-size: 14px; line-height: 1.9; overflow-wrap: anywhere; }
+.typing-cursor { display: none; }
+.is-typing .typing-cursor { display: inline; color: var(--accent); animation: cursor-blink .8s steps(1) infinite; }
+@keyframes cursor-blink { 50% { opacity: 0; } }
+.video-player-panel { min-width: 0; }
+.video-player-panel video { display: block; width: 100%; height: auto; border-radius: var(--radius); background: var(--blue); }
+.video-error { margin-top: 16px; }
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.mesh-status { margin-bottom: 16px; font-size: 14px; color: var(--muted); }
+.mesh-frame { display: block; width: 100%; height: 690px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
+.todo-content { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 24px; padding-block: 48px; text-align: center; }
+.todo-content h1 { font-size: clamp(24px, 3vw, 36px); letter-spacing: 0; }
+@media (max-width: 700px) {
+  .experience-list .project-link { padding: 22px 18px; gap: 12px; }
+  .experience-body { grid-template-columns: 24px minmax(0, 1fr); gap: 12px; }
+  .experience-content h2 { font-size: 20px; }
+  .detail-header { padding-block: 20px; }
+  .detail-intro h1 { font-size: 30px; }
+  .video-layout { grid-template-columns: 1fr; gap: 24px; padding-top: 24px; }
+  .video-player-panel { grid-row: 1; }
+  .video-prompt-panel { grid-row: 2; padding: 20px; }
+  .prompt-text { min-height: 0; font-size: 15px; margin-top: 20px; }
+  .mesh-frame { height: 1120px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .project-link { transition: none; }
+  .typing-cursor { animation: none; }
+}
+

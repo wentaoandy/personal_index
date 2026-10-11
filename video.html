@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>视频生成实验 · 张文涛</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body class="video-page">
+  <div class="page">
+    <header class="detail-header">
+      <a class="button button-secondary" href="experience.html">← 返回做过什么</a>
+    </header>
+    <main class="video-layout">
+      <section class="video-prompt-panel" aria-labelledby="prompt-title">
+        <h1 id="prompt-title">生成提示词 <span lang="en">/ VIDEO PROMPT</span></h1>
+        <p class="prompt-text" lang="en">
+          <span class="prompt-visual" aria-hidden="true"><span id="video-prompt">A single young woman with sun-kissed skin and a gentle smile is in a flower field. She kneels gracefully to pick a wild daisy while a soft breeze lifts her hair. The warm golden sunlight creates soft shadows across the scene. IMPORTANT: The video shows only ONE person, a single consistent identity, from a single continuous camera view. No multiple views, no split screen, no duplicated faces. The reference image is used only to preserve identity. She briefly looks toward the camera with a natural and smooth motion, her expression calm and lively. The scene is stable, cinematic, and realistic.</span><span class="typing-cursor">|</span></span>
+          <span class="sr-only">A single young woman with sun-kissed skin and a gentle smile is in a flower field. She kneels gracefully to pick a wild daisy while a soft breeze lifts her hair. The warm golden sunlight creates soft shadows across the scene. IMPORTANT: The video shows only ONE person, a single consistent identity, from a single continuous camera view. No multiple views, no split screen, no duplicated faces. The reference image is used only to preserve identity. She briefly looks toward the camera with a natural and smooth motion, her expression calm and lively. The scene is stable, cinematic, and realistic.</span>
+        </p>
+      </section>
+      <section class="video-player-panel" aria-label="视频生成实验">
+        <video controls playsinline preload="metadata" aria-label="视频生成实验：点击播放">
+          <source src="references/concatid.mp4" type="video/mp4">
+          浏览器不支持视频播放，请<a class="text-link" href="references/concatid.mp4">打开原视频</a>。
+        </video>
+        <p class="video-error" hidden role="status">视频暂时无法加载，请检查 references/concatid.mp4 是否完整。</p>
+      </section>
+    </main>
+    <footer class="site-footer"><span>张文涛</span><span lang="en">ZHANG WENTAO</span></footer>
+  </div>
+</body>
+</html>
